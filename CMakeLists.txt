@@ -18,8 +18,7 @@ set(PROJECT_SOURCES
 )
 
 set(qmake_content_resource_files
-    "Components/Pointer.qml"
-    "Components/Line.qml"
+    "Components"
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

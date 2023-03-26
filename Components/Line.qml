@@ -7,18 +7,23 @@ Item {
     layer.enabled: true
     layer.samples: 4
 
-    property int lineThicknessPx: 1
+    property int lineThickness
 
-    property int startX: 0
-    property int startY: 0
+    property color lineColor
 
-    property int endX: 0
-    property int endY: 0
+    property int startX
+    property int startY
 
-    readonly property real lenX_px: endX - startX
-    readonly property real lenY_px: endY - startY
-    readonly property real len_px: Math.sqrt(Math.pow(lenX_px, 2) + Math.pow(lenY_px, 2))
-    readonly property real angle_deg: radToDeg(Math.atan2(lenY_px, lenX_px))
+    property int endX
+    property int endY
+
+    readonly property real lenX: endX - startX
+    readonly property real lenY: endY - startY
+    readonly property real len: Math.sqrt(Math.pow(lenX, 2) + Math.pow(lenY, 2))
+    readonly property real centerX: startX + lenX / 2
+    readonly property real centerY: startY + lenY / 2
+    readonly property real angleRad: Math.atan2(lenY, lenX)
+    readonly property real angleDeg: radToDeg(angleRad)
 
     function radToDeg(rad) {
         return rad * (180.0 / Math.PI);
@@ -27,13 +32,16 @@ Item {
     Shape {
         ShapePath {
             id: line
-            strokeColor: "red"
-            strokeWidth: root.lineThicknessPx
+            strokeColor: lineColor
+            strokeWidth: root.lineThickness
             capStyle: ShapePath.RoundCap
 
             startX: root.startX
             startY: root.startY
-            PathLine { relativeX: root.endX - root.startX; relativeY: root.endY - root.startY }
+            PathLine {
+                relativeX: root.endX - root.startX
+                relativeY: root.endY - root.startY
+            }
         }
     }
 }

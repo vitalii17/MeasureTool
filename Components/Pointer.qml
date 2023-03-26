@@ -3,24 +3,28 @@ import QtQuick 2.15
 Item {
     id: root
 
-    property color pointer_color: "red"
-    property int item_size_px: 50
-    property int line_thickness_px: 4
+    property color pointerColor
+    property int itemSize
+    property int lineWidth
 
-    width:  item_size_px
-    height: item_size_px
+    width:  itemSize
+    height: itemSize
 
     Rectangle {
+        id: vertLine
         anchors.horizontalCenter: parent.horizontalCenter
-        color: pointer_color
-        width: line_thickness_px
+        color: pointerColor
+        width: lineWidth
         height: parent.height
+        radius: width / 2
     }
 
     Rectangle {
+        id: horLine
         anchors.verticalCenter: parent.verticalCenter
-        color: pointer_color
+        color: pointerColor
         width: parent.width
-        height: line_thickness_px
+        height: lineWidth
+        radius: height / 2
     }
 }

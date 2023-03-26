@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>Components/Pointer.qml</file>
         <file>Components/Line.qml</file>
+        <file>Components/RefDialog.qml</file>
     </qresource>
 </RCC>
